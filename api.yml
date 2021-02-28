@@ -101,3 +101,4 @@ Outputs:
     Value: !Ref Function.Version
   ExampleRoleForGithub:
     Value: !GetAtt ExampleRoleForGithub.Arn
+
