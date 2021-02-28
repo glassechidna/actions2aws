@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v2
       
       - name: keygen
-        uses: glassechidna/actions2aws/keygen@main
+        uses: iann0036/actions2aws/keygen@main
 
       - name: assume role
         uses: glassechidna/actions2aws/assume@main
