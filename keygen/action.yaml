@@ -2,5 +2,5 @@ name: actions2aws-keygen
 description: Assume an AWS IAM role without needing any access keys
 runs:
   using: docker
-  image: docker://ghcr.io/glassechidna/actions2aws:v0.1
+  image: docker://ghcr.io/iann0036/actions2aws:v0.1
   args: [keygen]

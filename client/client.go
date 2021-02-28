@@ -16,7 +16,7 @@ import (
 )
 
 func main() {
-	exitEarlyOnForks()
+	//exitEarlyOnForks()
 
 	switch os.Args[1] {
 	case "keygen":
