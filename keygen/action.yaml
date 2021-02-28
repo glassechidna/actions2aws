@@ -4,4 +4,3 @@ runs:
   using: docker
   image: docker://ghcr.io/iann0036/actions2aws:v0.1
   args: [keygen]
-
