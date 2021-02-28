@@ -9,10 +9,10 @@ jobs:
       - uses: actions/checkout@v2
       
       - name: keygen
-        uses: glassechidna/actions2aws/keygen@master
+        uses: glassechidna/actions2aws/keygen@main
 
       - name: assume role
-        uses: glassechidna/actions2aws/assume@master
+        uses: glassechidna/actions2aws/assume@main
         with:
           url: ${{ secrets.URL }}
           role: arn:aws:iam::${{ secrets.ACCOUNT_ID }}:role/actions2aws-ExampleRoleForGithub-10X8QX5GEZTZQ
