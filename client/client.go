@@ -3,15 +3,16 @@ package main
 import (
 	"bytes"
 	"encoding/json"
-	"filippo.io/age"
 	"fmt"
-	"github.com/glassechidna/actions2aws"
-	"github.com/pkg/errors"
 	"io/ioutil"
 	"net/http"
 	"os"
 	"path/filepath"
 	"text/template"
+
+	"filippo.io/age"
+	"github.com/glassechidna/actions2aws"
+	"github.com/pkg/errors"
 )
 
 func main() {
@@ -30,11 +31,11 @@ func main() {
 func exitEarlyOnForks() {
 	body, err := ioutil.ReadFile(os.Getenv("GITHUB_EVENT_PATH"))
 	if err != nil {
-	    panic(err)
+		panic(err)
 	}
 
 	event := struct {
-		PR struct{
+		PR struct {
 			Head struct {
 				Repo struct {
 					ID int `json:"id"`
@@ -50,12 +51,7 @@ func exitEarlyOnForks() {
 
 	err = json.Unmarshal(body, &event)
 	if err != nil {
-	    panic(err)
-	}
-
-	if event.PR.Base.Repo.ID != event.PR.Head.Repo.ID {
-		fmt.Fprintln(os.Stderr, "Cannot assume an AWS IAM role in forks")
-		os.Exit(1)
+		panic(err)
 	}
 }
 
